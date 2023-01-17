@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap";
+
+.sidebar{
+  background-color: #c1c1c1;
+  height: 100vh;
+
+  &__link{
+    text-decoration: none;
+    color:black;
+
+    &__onglet{
+      padding: 10px 0;
+      border-bottom: 1px dashed white;
+      font-size: 19px;
+    }
+
+  }
+
+}

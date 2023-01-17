@@ -26,29 +26,38 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ path('app_jeu') }}">Accueil</a>
+							<a class="nav-link {{ (app.request.get('_route') == "app_jeu") ? 'active' : '' }}" aria-current="page" href="{{ path('app_jeu') }}">Accueil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ (app.request.get('_route') == "app_jeu_liste") ? 'active' : '' }}" aria-current="page" href="{{ path('app_jeu_liste') }}">Nos jeux</a>
 						</li>
 					</ul>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 						{% if app.user %}
 
+							{% if is_granted('ROLE_ADMIN')  %}
+								<li class="nav-item">
+									<a class="nav-link" aria-current="page" href="{{ path('app_admin') }}">Admin</a>
+								</li>
+							{% endif %}
+
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('app_profil') }}">Mon compte</a>
+								<a class="nav-link {{ (app.request.get('_route') == "app_profil") ? 'active' : '' }}" aria-current="page" href="{{ path('app_profil') }}">Mon compte</a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
+								<a class="nav-link" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
 							</li>
 
 						{% else %}
 
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
+								<a class="nav-link {{ (app.request.get('_route') == "app_register") ? 'active' : '' }}" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
+								<a class="nav-link {{ (app.request.get('_route') == "app_login") ? 'active' : '' }}" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
 							</li>
 
 						{% endif %}

@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between flex-wrap mt-4">
+    {% for jeu in jeux %}
+
+        <div class="card mt-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ jeu.nom }}</h5>
+                <p class="jeu__genre" style="background-color: {{ jeu.genre.couleur }}">{{ jeu.genre.nom }}</p>
+                <p class="card-text">{{ jeu.description }}</p>
+                <a href="{{ path('app_jeu_voir', {'id' : jeu.id}) }}" class="btn btn-primary btn-sm">Voir le jeu</a>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>

@@ -1,0 +1,20 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ (app.request.get('_route') == 'app_admin_genre_ajouter' ? 'Ajouter' : 'Modifier') }} un genre{% endblock %}
+
+{% block body %}
+    <h1>{{ (app.request.get('_route') == 'app_admin_genre_ajouter' ? 'Ajouter' : 'Modifier') }} un genre</h1>
+
+    <div class="w-25 mt-5">
+    {{ form_start(form) }}
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.popularite) }}
+        {{ form_row(form.couleur) }}
+
+        <button class="btn btn-success" type="submit">{{ (app.request.get('_route') == 'app_admin_genre_ajouter' ? 'Ajouter' : 'Modifier') }}</button>
+
+    {{ form_end(form) }}
+    </div>
+
+{% endblock %}

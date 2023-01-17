@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Admin - {% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('admin') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('admin') }}
+		{% endblock %}
+	</head>
+	<body>
+		 <div class="container-fluid">
+			 <div class="row">
+
+				 {# sidebar starts #}
+				 <div class="col-2 sidebar">
+					 <a href="{{ path('app_admin') }}" class="sidebar__link"><div class="sidebar__link__onglet">Dashboard</div></a>
+					 <a href="{{ path('app_admin_genre') }}" class="sidebar__link"><div class="sidebar__link__onglet">Lister les genres</div></a>
+					 <a href="{{ path('app_admin_jeu') }}" class="sidebar__link"><div class="sidebar__link__onglet">Lister les jeux</div></a>
+				 </div>
+				 {# sidebar ends #}
+
+				 {# maincontent starts #}
+				 <div class="col">
+
+					 {# Affichage de mes flash messages #}
+					 {% for label, messages in app.flashes %}
+						 {% for message in messages %}
+							 <div class="alert alert-{{ label }}">
+								 {{ message }}
+							 </div>
+						 {% endfor %}
+					 {% endfor %}
+
+					 {# Le corps de la partie admin #}
+					 <div class="container mt-5">
+						 {% block body %}{% endblock %}
+					 </div>
+
+				 </div>
+				 {# maincontent ends #}
+
+			 </div>
+		 </div>
+
+	</body>
+</html>

@@ -8,8 +8,12 @@
 	<div class="container w-25 m-auto mt-5">
 		{{ form_start(form) }}
             {{ form_row(form.email) }}
-            {{ form_row(form.prenom) }}
-            {{ form_row(form.nom) }}
+
+			<div class="row">
+				<div class="col">{{ form_label(form.prenom) }} * {{ form_widget(form.prenom) }} {{ form_errors(form.prenom) }}</div>
+				<div class="col">{{ form_row(form.nom) }}</div>
+			</div>
+
             {{ form_row(form.password) }}
 		    <button type="submit" class="btn btn-success">S'inscrire</button>
         {{ form_end(form) }}
